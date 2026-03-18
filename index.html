@@ -3,16 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umbrella</title>
-    <link rel="website icon" type="png" href="images/umbrella.png">
+    <link rel="website icon" type="png" href="images/kid.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="log">
-        <img class="logo" src="images/umbrella.png" >
-        <p class="logo-name">Umbrella</p>
-    </div>
-
-<div class="card">
+    <div class="card">
     <div class="search">
         <input type="text" placeholder="Поиск"  spellcheck="false">
         <button><img src="images/search.png"></button>
@@ -29,14 +24,14 @@
                 <img src="images/humidity.png">
                 <div>
                     <p class="humidity">50%</p>
-                    <p>Humidity</p>
+                    <p>Влажность</p>
                 </div>
             </div>
             <div class="col">
                 <img src="images/wind.png">
                 <div>
                     <p class="wind">15 km/h</p>
-                    <p>Wind Speed</p>
+                    <p>Скорость ветра</p>
                 </div>
             </div>
         </div>
@@ -45,7 +40,7 @@
 
 <script>
    const apiKey = "53fb39608b0a7e5790f5779c78b289b4";
-   const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+   const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru&q=";
 
    const searchBox = document.querySelector(".search input");
     const searchBtn = document.querySelector(".search button");
@@ -63,6 +58,7 @@
      document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
      document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
      document.querySelector(".wind").innerHTML = Math.round(data.wind.speed) + "km/h";
+     
 
         if(data.weather[0].main == "Clouds"){
          weatherIcon.src = "images/cloudy.png";
