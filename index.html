@@ -11,6 +11,7 @@
     <div class="search">
         <input type="text" placeholder="Поиск"  spellcheck="false">
         <button><img src="images/search.png"></button>
+        <button id="locationBtn"><img src="images/location.png"></button>
     </div>
     <div class="error">
         <p>Город не существует</p>
@@ -45,6 +46,7 @@
    const searchBox = document.querySelector(".search input");
     const searchBtn = document.querySelector(".search button");
     const weatherIcon = document.querySelector(".weather-icon") 
+    const locationsBtn = document.getElementById("locationBtn")
 
    async function checkWeather(city){
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
@@ -86,6 +88,15 @@
     
     
 }
+async function getCity() {
+        const response = await fetch('http://ip-api.com/json/?fields=city&lang=ru');
+        const data = await response.json();
+        
+        if (data.city) {
+            return data.city;
+        }
+}
+
 document.addEventListener('keydown', enter);
 function enter(event) {
 const keyPressed = event.keyCode;
@@ -96,12 +107,23 @@ checkWeather(searchBox.value)
 }; 
 }
 
+
+
    searchBtn.addEventListener("click", () =>{
       checkWeather(searchBox.value);
    })
-
-
- 
+   
+   locationsBtn.addEventListener('click', async () => {
+    const city = await getCity();
+    
+    if (city) {
+        searchBox.value = city;  
+        checkWeather(city);      
+    } else {
+        document.querySelector(".error").style.display = "block";
+        document.querySelector(".weather").style.display = "none";
+    }
+});
 </script>
     
 </body>
