@@ -13,6 +13,12 @@ body{
     align-items: flex-start;
     padding-top: 20px; 
 }
+.star{
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+}
 .card{
     width: 90%;
     max-width: 470px;
@@ -23,6 +29,7 @@ body{
     padding: 40px 35px;
     text-align: center;
     position: relative;
+    z-index: 1;
 }
 @property --angle{
     syntax: "<angle>";

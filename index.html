@@ -124,6 +124,46 @@ checkWeather(searchBox.value)
         document.querySelector(".weather").style.display = "none";
     }
 });
+
+
+function getRandomNumber(min, max) {
+return Math.random() * (max - min) + min;
+}
+
+function createStar()  {
+const star = document.createElement('div');
+star.classList.add('star');
+
+const x = getRandomNumber(0, window.innerWidth);
+const y = getRandomNumber(0, window.innerHeight);
+
+const size = getRandomNumber(1, 3);
+ 
+const opacity = getRandomNumber(0.5, 1);
+
+star.style.left = x + 'px';
+star.style.top = y + 'px';
+star.style.width = size + 'px';
+star.style.height = size + 'px';
+star.style.opacity = opacity;
+
+return star;
+}
+
+const starCount = 200;
+const starContainer = document.body;
+
+function animateStar(star){
+    setInterval(() => {
+        star.style.opacity = getRandomNumber(0.3, 1);
+    }, getRandomNumber(1000, 10000));
+}
+
+for(let i = 0; i < starCount; i++){
+    const star = createStar();
+    animateStar(star);
+starContainer.appendChild(star);
+}
 </script>
     
 </body>
