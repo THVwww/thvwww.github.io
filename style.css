@@ -199,9 +199,24 @@ body{
     margin-top: 10px;
     display: none;
 }
-#mic-btn.listening {
-  color: red; /* Или ваш акцентный цвет */
+#micBtn.listening {
+  color: red; 
   animation: pulse 1.5s infinite;
+}
+#micBtn.listening::after{
+     content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle),transparent -100%, #cc0000);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: -1;
+    animation: 3s spin linear infinite;
+    box-shadow: 0 0 30px rgb(191, 27, 27); 
 }
 
 @keyframes pulse {
